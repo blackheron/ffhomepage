@@ -1,0 +1,143 @@
+.menu {
+  padding: 1em;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 80vh;
+  transform: translateY(calc(-100% - 2em));
+  transition: transform var(--animation-speed-fast) ease-in-out;
+  z-index: var(--z-index-menu);
+  pointer-events: none;
+}
+
+.menu:focus {
+  outline: none;
+}
+
+.is-menu-open .menu {
+  transform: translateY(0);
+}
+
+.menu-area {
+  background-color: rgb(var(--gray-01));
+  border-radius: var(--radius);
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  pointer-events: all;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column-reverse;
+  flex-direction: row;
+}
+
+.menu-nav-area {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.menu-nav-area-grow {
+  flex-grow: 1;
+}
+
+.menu-nav:not(:last-child) {
+  margin: 0;
+}
+
+.menu-content {
+  padding: 2em 2em 20vh 2em;
+}
+
+.menu-content-area {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2em;
+}
+
+.menu-item {
+  padding-bottom: 2em;
+  border-bottom: var(--line-width) solid rgb(var(--gray-04));
+}
+
+.menu-item:last-child,
+.menu-item:nth-last-child(2):nth-child(odd) {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.menu-close {
+  background-color: transparent;
+  margin: 0;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  border-radius: 0 var(--radius) 0 0;
+}
+
+.menu-nav-button {
+  background-color: transparent;
+  margin: 0;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-radius: 0;
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+
+.menu-nav-button:first-child {
+  border-radius: var(--radius) 0 0 0;
+}
+
+.menu-nav-button [class^="icon-"],
+.menu-nav-button [class*=" icon-"] {
+  line-height: 1;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+@media (min-width: 550px) {
+  .menu {
+    width: 80vw;
+    height: 100%;
+    overflow-y: inherit;
+    max-height: inherit;
+  }
+
+  .menu-area {
+    overflow-y: inherit;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 100fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
+  .menu-content {
+    overflow-y: auto;
+  }
+
+  .menu-content-area {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-nav-button {
+    flex-basis: 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .menu {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1100px) {
+  .menu {
+    width: 50vw;
+  }
+}

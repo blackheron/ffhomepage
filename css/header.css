@@ -1,0 +1,116 @@
+.header {
+  padding: calc(var(--gutter) * var(--header-shade-padding)) 0;
+  width: 100%;
+  position: relative;
+  z-index: var(--z-index-header);
+}
+
+.is-bookmarks-show-link .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.header .header-shade,
+.header .header-border {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.is-header-shade-style-scroll .header .header-shade {
+  transition: background-color var(--animation-speed-slow) ease-in-out;
+  animation: none;
+}
+
+.is-header-shade-show .header .header-shade {
+  background-color: rgb(var(--header-shade-color));
+  opacity: var(--header-shade-opacity);
+}
+
+.is-header-shade-border-top .header .header-border {
+  border-top: var(--line-width) solid rgb(var(--accent));
+}
+
+.is-header-shade-border-bottom .header .header-border {
+  border-bottom: var(--line-width) solid rgb(var(--accent));
+}
+
+.header-area {
+  margin: 0 calc(var(--gutter) * -1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.header-item {
+  margin: var(--gutter);
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header-search-input[type="text"] {
+  padding-right: 3em;
+}
+
+.header-search-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.is-header-alignment-horizontal-left .header-area {
+  justify-content: flex-start;
+}
+
+.is-header-alignment-horizontal-center .header-area {
+  justify-content: center;
+}
+
+.is-header-alignment-horizontal-right .header-area {
+  justify-content: flex-end;
+}
+
+.is-layout-width-thin.is-header-search-grow .header-search,
+.is-header-search-grow .header-search {
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+
+@media (min-width: 550px) {
+  .is-header-search-grow .header-search {
+    flex-basis: initial;
+  }
+}
+
+.header-search {
+  width: 15vw;
+  min-width: 15em;
+}
+
+.header-date,
+.header-clock,
+.header-search,
+.header-edit-add,
+.header-accent,
+.header-menu {
+  display: none;
+}
+
+.is-header-search-show .header-search,
+.is-header-date-show .header-date,
+.is-header-clock-show .header-clock,
+.is-header-edit-add .header-edit-add,
+.is-header-accent .header-accent,
+.is-menu .header-menu {
+  display: flex;
+}
